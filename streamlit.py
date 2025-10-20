@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
-import thatonefile as ds
+import thatonefile as *
 
 
 st.write("Melbourne housing")
 if st.button("test"):
-    st.write("test complete")
+    st.dataframe(datasetcall())
+
 st.area_chart(ds.dataset ,x="testx", y="testy")
