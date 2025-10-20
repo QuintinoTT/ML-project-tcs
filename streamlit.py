@@ -5,7 +5,8 @@ import thatonefile.py as tof
 
 st.write("Melbourne housing")
 if st.button("test"):
-    st.dataframe(tof.datasetcall())
+   # st.dataframe(tof.datasetcall())
 
 st.area_chart(tof.dataset ,x="testx", y="testy")
+
 
