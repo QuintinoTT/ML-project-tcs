@@ -1,2 +1,3 @@
+pip install --upgrade pip
 pip install sklearn
 pip install pandasql
