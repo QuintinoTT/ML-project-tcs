@@ -1,2 +1,2 @@
-import pandasql 
-import sklearn
+pip install pandasql 
+pip install sklearn
