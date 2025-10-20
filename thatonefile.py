@@ -45,3 +45,5 @@ dataset_features_test_scaled = pd.DataFrame(scaler.transform(dataset_features_tr
 print(dataset)
 dataset.to_csv('C:/Users/lucas/Documents/Project week 7 & 8/cleaned_md.csv', index=False)
 print("Cleaned dataset saved to 'cleaned_md.csv'")
+def datasetcall():
+    return dataset
