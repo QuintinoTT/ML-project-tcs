@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import thatonefile as tof
+import thatonefile.py as tof
 
 
 st.write("Melbourne housing")
