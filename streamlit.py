@@ -4,4 +4,4 @@ import pandas as pd
 
 st.write("Melbourne housing")
 if st.button("click if retarded"):
-    st.balloons()
+    st.write("67")
