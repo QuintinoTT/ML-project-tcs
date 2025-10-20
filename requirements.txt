@@ -1,2 +1,2 @@
-pip install pandasql 
-pip install sklearn
+pandasql 
+sklearn
