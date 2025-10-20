@@ -3,7 +3,7 @@ import pandasql as ps
 import sklearn.model_selection as skl
 from sklearn.preprocessing import StandardScaler
 
-dataset_path = 'C:/Users/lucas/Documents/Project week 7 & 8/md.csv'
+dataset_path = 'dataset.csv'
 dataset = pd.read_csv(dataset_path)
 
 dataset = dataset.drop(columns=['Address', 'BuildingArea', 'Suburb', 'Postcode','Date', 'Lattitude', 'Longtitude', 'Regionname'])
