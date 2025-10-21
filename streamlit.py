@@ -13,11 +13,12 @@ col1, col2 = st.columns(2)
 budgetinp=col1.text_input(placeholder="Budget")
 budgetreginp=col1.text_input(placeholder="Reg")
 if st.button("Budget stuff"):
-  regionB = str({budgetreginp})
-  pricevarB = str({budgetinp})
+  regionB = {budgetreginp}
+  pricevarB = {budgetinp}
   st.write(regionB, pricevarB)
   st.write(data.query("select *, "+pricevarB+"-price as Budget_deviation, price FROM dataset  WHERE CouncilArea = \""+regionB+"\" order by ABS(Budget_deviation) LIMIT 15 "))
   
+
 
 
 
