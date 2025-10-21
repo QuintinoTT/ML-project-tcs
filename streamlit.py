@@ -7,8 +7,8 @@ import dataprocessing as data
 dataset = data.dataset
 
 
-query = st.text_input(label="SQL query", placeholder="write your SQL query here")
-st.write(query)
+sqlquery = st.text_input(label="SQL query", placeholder="write your SQL query here")
+st.write(data.query(sqlquery))
 
 with st.container(border=True, gap=None): #top header
   st.header("Melbourne housing", divider="blue")
