@@ -9,7 +9,7 @@ dataset = data.dataset
 
 sqlquery = st.text_input(label="SQL query", placeholder="write your SQL query here")
 if st.button("push query"):
-  st.write(data.query(sqlquery))
+  st.write(data.query(sqlquery)) or st.write("invalid query")
 
 with st.container(border=True, gap=None): #top header
   st.header("Melbourne housing", divider="blue")
