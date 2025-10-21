@@ -8,7 +8,7 @@ dataset = data.dataset
 
 query_col, push_query_col = st.columns([3,1])
 sqlquery = query_col.text_input(label="", placeholder="write your SQL query here")
-if push_query_col.button(label="", placeholder="push query"):
+if push_query_col.button(label="push query"):
   st.write(data.query(sqlquery))
 
 
