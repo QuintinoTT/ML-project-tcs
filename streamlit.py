@@ -19,14 +19,14 @@ with st.container(border=True):
     st.write(regionB, pricevarB)
     col2.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 "))
-    budgetinp=st.text_input(label="Budget",placeholder="Budget")
+  budgetinp=st.text_input(label="Budget",placeholder="Budget")
   budgetreginp=st.selectbox(
     "Region:", 
     data.query(
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Select region",
   )
-  budgetinp = st.text_input("Budget")
+
 
 
 
