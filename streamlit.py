@@ -11,7 +11,7 @@ with st.container(border=True, gap=None): #top header
   st.write("Predicting housing prices using kNN Machine Learning")
 
 with st.container(border=True):
-  col1, col2 = columns(2)
+  col1, col2 = st.columns(2)
   col1.write(dataset) #display dataset
   if st.button("Budget stuff"):
     regionB = budgetreginp
@@ -26,6 +26,7 @@ with st.container(border=True):
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Select region",
   )
+
 
 
 
