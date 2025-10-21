@@ -22,13 +22,13 @@ budgetreginp=col1.selectbox(
     "SELECT distinct CouncilArea FROM dataset"), 
   placeholder="Select region",
 )
-#budgetreginp=col1.text_input(label="Region")
-if st.button("Budget stuff"):
-  regionB = budgetreginp
-  pricevarB = str(budgetinp)
-  st.write(regionB, pricevarB)
-  st.write(data.query(
-    "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 "))
+with c1:
+  if st.button("Budget stuff"):
+    regionB = budgetreginp
+    pricevarB = str(budgetinp)
+    st.write(regionB, pricevarB)
+    st.write(data.query(
+      "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 "))
 
 
 
