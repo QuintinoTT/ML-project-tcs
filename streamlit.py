@@ -13,6 +13,7 @@ with st.container(border=True, gap="Small"):
         st.write(data.query(sqlquery))
     finally:
       st.write("nah")
+      sqlquery = st.empty()
 
 
 
@@ -70,6 +71,7 @@ with st.container(border=True): #second query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
