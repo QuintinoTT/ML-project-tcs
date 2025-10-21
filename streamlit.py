@@ -7,7 +7,7 @@ import dataprocessing as data
 dataset = data.dataset
 
 query_col, push_query_col = st.columns([3,1])
-sqlquery = query_col.text_input(label="dev/temp SQL query", placeholder="write your SQL query here")
+sqlquery = query_col.text_input(placeholder="write your SQL query here")
 if push_query_col.button("push query"):
   st.write(data.query(sqlquery))
 
