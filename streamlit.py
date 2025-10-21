@@ -13,7 +13,7 @@ with st.container(border=True, gap=None): #top header
 
 with st.container(border=True): #fist query; price prediction
   st.subheader("Price prediction:")
-  feature_col, data_col = st.columns(2)
+  feature_col, data_col = st.columns(2 ,[1,3])
   select_type = feature_col.selectbox(
     "Type:", 
     data.query(
