@@ -20,13 +20,19 @@ with st.container(border=True): #fist query; price prediction
       "SELECT distinct Type FROM dataset"), 
     placeholder="Select type",
   )
-  select_rooms = feature_col.text_input(label="Amount of rooms:")
+  select_councilarea = feature_col.selectbox(
+    "Region:", 
+    data.query(
+      "SELECT distinct CouncilArea FROM dataset"), 
+    placeholder="Council area",
+  )
   select_method = feature_col.selectbox(
     "Method:", 
     data.query(
       "SELECT distinct Method FROM dataset"), 
     placeholder="Select method",
   )
+  select_rooms = feature_col.text_input(label="Amount of rooms:")
   select_distance = feature_col.text_input(label="Distance to centre:")
   select_bedroom = feature_col.text_input(label="Amount of bedrooms:")
   select_bathroom = feature_col.text_input(label="Amount of bathrooms:")
@@ -58,12 +64,6 @@ with st.container(border=True): #second query
     pricevarB = str(budgetinp)
     col2.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
-
-
-st.write(data.query(
-  "SELECT distinct Type, Method, Distance, Bedroom2, bathroom, Car, Landsize, YearBuilt, CouncilArea FROM dataset"
-))
-
 
 
 
