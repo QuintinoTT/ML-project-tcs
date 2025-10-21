@@ -11,7 +11,7 @@ with st.container(border=True, gap=None): #top header
   st.write("Predicting housing prices using kNN Machine Learning")
 
 
-with st.container(border=True):
+with st.container(border=True): #fist query; price prediction
   st.subheader("Price prediction:")
   feature_col, data_col = st.columns(2)
   select_type = st.selectbox(
@@ -20,13 +20,15 @@ with st.container(border=True):
       "SELECT distinct Type FROM dataset"), 
     placeholder="Select type",
   )
+  select_rooms = st.text_input(label="Amount of rooms:")
+
   data_col.write(dataset)
 
 
 with st.container(border=True): #second query
   col1, col2 = st.columns(2, width="stretch")
   col1.write(dataset) #display dataset
-  budgetinp=st.text_input(label="Budget",placeholder="Budget")
+  budgetinp=st.text_input(label="Budget:",placeholder="Select budget")
   budgetreginp=st.selectbox(
     "Region:", 
     data.query(
