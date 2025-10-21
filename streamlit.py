@@ -6,4 +6,5 @@ import dataprocessing as data
 
 
 st.header("Melbourne housing")
-st.container(data.dataset, True, width="stretch")
+st.container(data.dataset)
+
