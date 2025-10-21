@@ -7,6 +7,7 @@ import dataprocessing as data
 with st.container(border=True, gap=None):
   st.header("Melbourne housing", divider="blue")
   st.write("Predicting housing prices using kNN Machine Learning")
+dataset=data.datasetcall()
 c1 = st.container(border=True)
 c1.write(data.dataset)
 col1, col2 = st.columns(2)
@@ -18,6 +19,7 @@ if st.button("Budget stuff"):
   st.write(regionB, pricevarB)
   st.write(data.query("select *, "+pricevarB+"-price as Budget_deviation, price FROM dataset  WHERE CouncilArea = \""+regionB+"\" order by ABS(Budget_deviation) LIMIT 15 "))
   
+
 
 
 
