@@ -3,16 +3,14 @@ import pandas as pd
 import sklearn as sl
 import pandasql as ps
 import dataprocessing as data
-from pandas.io.sql import DatabaseError
+
 dataset = data.dataset
 
 with st.container(border=True, gap="Small"):
   sqlquery = st.text_input(label="temperary SQL on web app (invalid query will break the website)", placeholder="write your SQL query here")
   if st.button("push query"):
-    try:
       st.write(data.query(sqlquery))
-    except DatabaseError as e:
-      st.write("goofy ass querry")
+
 
 
 with st.container(border=True, gap=None): #top header
@@ -69,6 +67,7 @@ with st.container(border=True): #second query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
