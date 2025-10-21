@@ -19,8 +19,7 @@ budgetinp=col1.text_input(label="Budget",placeholder="Budget")
 budgetreginp=col1.selectbox(
   "Region:", 
   data.query(
-  "SELECT distinct CouncilArea"
-  "FROM dataset"), 
+    "SELECT distinct CouncilArea FROM dataset"), 
   placeholder="Select region",
 )
 #budgetreginp=col1.text_input(label="Region")
@@ -30,6 +29,7 @@ if st.button("Budget stuff"):
   st.write(regionB, pricevarB)
   st.write(data.query("select *, "+pricevarB+"-price as Budget_deviation, price FROM dataset  WHERE CouncilArea = \""+regionB+"\" order by ABS(Budget_deviation) LIMIT 15 "))
   
+
 
 
 
