@@ -6,11 +6,12 @@ import dataprocessing as data
 
 dataset = data.dataset
 
-with st.container(border=True, vertical_alignment="top", gap=None):
+with st.container(border=True, horizontal_alignment="right", gap=None):
   query_col, push_query_col = st.columns([5,1])
-  sqlquery = query_col.text_input(label="temperary SQL on web app", placeholder="write your SQL query here")
+  sqlquery = query_col.text_input(label="temperary SQL on web app (invalid query will break the website)", placeholder="write your SQL query here")
   if push_query_col.button("push query"):
     st.write(data.query(sqlquery))
+    
 
 
 with st.container(border=True, gap=None): #top header
