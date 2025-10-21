@@ -39,13 +39,6 @@ with st.container(border=True): #fist query; price prediction
   select_car = feature_col.text_input(label="Amount of carparking spaces:")
   select_landsize = feature_col.text_input(label="Landsize:")
   select_yearbuilt = feature_col.text_input(label="Year built:")
-  select_councilarea = feature_col.selectbox(
-    "Region:", 
-    data.query(
-      "SELECT distinct CouncilArea FROM dataset"), 
-    placeholder="Council area",
-  )
-  select_propertycount = feature_col.text_input(label="Amount of property in area")
   data_col.write(dataset)
 
 
