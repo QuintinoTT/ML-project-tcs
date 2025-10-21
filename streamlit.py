@@ -26,6 +26,8 @@ with st.container(border=True):
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Select region",
   )
+  budgetinp = st.text_input("Budget")
+
 
 
 
