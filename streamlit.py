@@ -12,7 +12,7 @@ with st.container(border=True, gap=None): #top header
 
 with st.container(border=True):
   col1, col2 = columns(2)
-    col1.write(dataset) #display dataset
+  col1.write(dataset) #display dataset
   if st.button("Budget stuff"):
     regionB = budgetreginp
     pricevarB = str(budgetinp)
@@ -26,6 +26,7 @@ with st.container(border=True):
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Select region",
   )
+
 
 
 
