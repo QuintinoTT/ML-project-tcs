@@ -5,7 +5,8 @@ import pandasql as ps
 import dataprocessing as data
 
 
-st.divider()
+st.container()
 st.header("Melbourne housing")
 st.write(data.dataset)
+
 
