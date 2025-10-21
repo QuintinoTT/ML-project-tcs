@@ -9,8 +9,6 @@ dataset = data.dataset
 with st.container(border=True, vertical_alignment="bottom", gap=None):
   query_col, push_query_col = st.columns([3,1])
   sqlquery = query_col.text_input(label="temperary SQL on web app", placeholder="write your SQL query here")
-  push_query_col.write("")
-  push_query_col.write("")
   if push_query_col.button("push query"):
     st.write(data.query(sqlquery))
 
