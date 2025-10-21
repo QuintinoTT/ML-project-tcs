@@ -17,8 +17,9 @@ col2.chat_input(placeholder="testinput3")
 if st.button("Budget stuff"):
   regionB = budgetreginp
   pricevarB = budgetinp
-  write(query("select *, "+pricevarB+"-price as Budget_deviation, price FROM dataset  WHERE CouncilArea = \""+regionB+"\" order by ABS(Budget_deviation) LIMIT 15 "))
+  st.write(query("select *, "+pricevarB+"-price as Budget_deviation, price FROM dataset  WHERE CouncilArea = \""+regionB+"\" order by ABS(Budget_deviation) LIMIT 15 "))
   
+
 
 
 
