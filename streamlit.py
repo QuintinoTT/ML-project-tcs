@@ -10,7 +10,20 @@ with st.container(border=True, gap=None): #top header
   st.header("Melbourne housing", divider="blue")
   st.write("Predicting housing prices using kNN Machine Learning")
 
+
 with st.container(border=True):
+  st.subheader("Price prediction:")
+  feature_col, data_col = st.columns(2)
+  select_type = st.selectbox(
+    "Type:", 
+    data.query(
+      "SELECT distinct Type FROM dataset"), 
+    placeholder="Select type",
+  )
+  data_col.write(dataset)
+
+
+with st.container(border=True): #second query
   col1, col2 = st.columns(2, width="stretch")
   col1.write(dataset) #display dataset
   budgetinp=st.text_input(label="Budget",placeholder="Budget")
