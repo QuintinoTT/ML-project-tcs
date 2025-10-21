@@ -28,7 +28,7 @@ with st.container(border=True):
 
 
 st.write(data.query(
-  "SELECT distinct * FROM dataset"
+  "SELECT distinct Type, Method, Distance, Bedroom2, bathroom, Car, Landsize, YearBuilt, CouncilArea FROM dataset"
 ))
 
 
