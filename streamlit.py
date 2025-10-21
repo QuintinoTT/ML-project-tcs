@@ -6,10 +6,11 @@ import dataprocessing as data
 
 dataset = data.dataset
 
+query_col, push_query_col = st.columns([3,1])
+sqlquery = query_col.text_input(label="dev/temp SQL query", placeholder="write your SQL query here")
+if push_query_col.button("push query"):
+  st.write(data.query(sqlquery))
 
-sqlquery = st.text_input(label="SQL query", placeholder="write your SQL query here")
-if st.button("push query"):
-  st.write(data.query(sqlquery)) or st.write("invalid query")
 
 with st.container(border=True, gap=None): #top header
   st.header("Melbourne housing", divider="blue")
