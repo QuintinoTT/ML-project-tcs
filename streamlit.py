@@ -10,6 +10,7 @@ with st.container(border=True, gap=None):
   query_col, push_query_col = st.columns([3,1])
   sqlquery = query_col.text_input(label="", placeholder="write your SQL query here")
   push_query_col.write("")
+  push_query_col.write("")
   if push_query_col.button("push query"):
     st.write(data.query(sqlquery))
 
