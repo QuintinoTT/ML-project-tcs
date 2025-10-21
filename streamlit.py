@@ -11,7 +11,7 @@ with st.container(border=True, gap=None): #top header
   st.write("Predicting housing prices using kNN Machine Learning")
 
 with st.container(border=True):
-  col1, col2 = st.columns(2)
+  col1, col2 = st.columns(2, width="Stretch")
   col1.write(dataset) #display dataset
   budgetinp=st.text_input(label="Budget",placeholder="Budget")
   budgetreginp=st.selectbox(
@@ -25,6 +25,7 @@ with st.container(border=True):
     pricevarB = str(budgetinp)
     col2.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
