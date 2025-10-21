@@ -14,13 +14,13 @@ with st.container(border=True, gap=None): #top header
 with st.container(border=True): #fist query; price prediction
   st.subheader("Price prediction:")
   feature_col, data_col = st.columns(2)
-  select_type = st.selectbox(
+  select_type = feature_col.selectbox(
     "Type:", 
     data.query(
       "SELECT distinct Type FROM dataset"), 
     placeholder="Select type",
   )
-  select_rooms = st.text_input(label="Amount of rooms:")
+  select_rooms = feature_col.text_input(label="Amount of rooms:")
 
   data_col.write(dataset)
 
