@@ -5,7 +5,7 @@ import pandasql as ps
 import dataprocessing as data
 
 
-st.header("Melbourne housing", width=1000, divider="Blue")
+st.header("Melbourne housing", divider="blue", width=1000)
 c1 = st.container(border=True)
 c1.write(data.dataset)
 col1, col2 = st.columns(2)
@@ -13,6 +13,7 @@ col1.chat_input(placeholder="testinput")
 col1.chat_input(placeholder="testinput2")
 col1.chat_input(placeholder="testinput3.1")
 col2.chat_input(placeholder="testinput3")
+
 
 
 
