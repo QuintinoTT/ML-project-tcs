@@ -4,13 +4,15 @@ import sklearn as sl
 import pandasql as ps
 import dataprocessing as data
 
-with st.container(border=True, gap=None):
+with st.container(border=True, gap=None): #top header
   st.header("Melbourne housing", divider="blue")
   st.write("Predicting housing prices using kNN Machine Learning")
-dataset=data.datasetcall()
+
+
 c1 = st.container(border=True)
-c1.write(data.dataset)
-col1, col2 = st.columns(2)
+c1.write(data.dataset) #display dataset
+
+col1=st.columns() #textinput + query output
 budgetinp=col1.text_input(label="Budget",placeholder="Budget")
 #budgetreginp=col1.selectbox(label="Region", ("Yarra", "test1", "test2", "test3"), placeholder="Select region")
 budgetreginp=col1.text_input(label="Region")
@@ -20,6 +22,7 @@ if st.button("Budget stuff"):
   st.write(regionB, pricevarB)
   st.write(data.query("select *, "+pricevarB+"-price as Budget_deviation, price FROM dataset  WHERE CouncilArea = \""+regionB+"\" order by ABS(Budget_deviation) LIMIT 15 "))
   
+
 
 
 
