@@ -10,7 +10,9 @@ c1 = st.container(border=True)
 c1.write(data.dataset)
 col1, col2 = st.columns(2)
 col1.chat_input(placeholder="testinput")
-col2.write("test2")
+col1.chat_input(placeholder="testinput2")
+col2.chat_input(placeholder="testinput3")
+
 
 
 
