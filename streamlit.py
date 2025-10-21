@@ -6,7 +6,8 @@ import dataprocessing as data
 
 
 st.header("Melbourne housing")
-st.container(data.dataset, border="True", key=None, width="stretch", height="content", horizontal=False, horizontal_alignment="left", vertical_alignment="top", gap="small")
+st.container(*, border="True", key=None, width="stretch", height="content", horizontal=False, horizontal_alignment="left", vertical_alignment="top", gap="small")
+
 
 
 
