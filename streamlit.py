@@ -23,9 +23,9 @@ with st.container(border=True):
   if st.button("Budget stuff"):
     regionB = budgetreginp
     pricevarB = str(budgetinp)
-    st.write(regionB, pricevarB)
     col2.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 "))
+
 
 
 
