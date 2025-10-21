@@ -7,7 +7,7 @@ import dataprocessing as data
 dataset = data.dataset
 
 
-query = st.text_input(placeholder="write your SQL query here")
+query = str(st.text_input(label="SQL query", placeholder="write your SQL query here"))
 st.write(query)
 
 with st.container(border=True, gap=None): #top header
