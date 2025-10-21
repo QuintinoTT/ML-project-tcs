@@ -6,10 +6,9 @@ import dataprocessing as data
 
 dataset = data.dataset
 
-with st.container(border=True, horizontal_alignment="right", gap=None):
-  query_col, push_query_col = st.columns([5,1])
-  sqlquery = query_col.text_input(label="temperary SQL on web app (invalid query will break the website)", placeholder="write your SQL query here")
-  if push_query_col.button("push query"):
+with st.container(border=True, gap=None):
+  sqlquery = st.text_input(label="temperary SQL on web app (invalid query will break the website)", placeholder="write your SQL query here")
+  if st.button("push query"):
     st.write(data.query(sqlquery))
     
 
