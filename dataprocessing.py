@@ -43,7 +43,8 @@ dataset_features_train_scaled = pd.DataFrame(scaler.fit_transform(dataset_featur
 dataset_features_test_scaled = pd.DataFrame(scaler.transform(dataset_features_train), columns=dataset_features_train.columns)
 
 print(dataset)
-dataset.to_csv('C:/Users/lucas/Documents/Project week 7 & 8/cleaned_md.csv', index=False)
+#dataset.to_csv('C:/Users/lucas/Documents/Project week 7 & 8/cleaned_md.csv', index=False)
 print("Cleaned dataset saved to 'cleaned_md.csv'")
 def datasetcall():
     return dataset
+
