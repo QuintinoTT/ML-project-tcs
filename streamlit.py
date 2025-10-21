@@ -6,7 +6,8 @@ import dataprocessing as data
 
 
 st.header("Melbourne housing")
-st.container("test", border="True")
+st.container()
+
 
 
 
