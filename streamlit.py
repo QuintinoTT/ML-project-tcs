@@ -20,8 +20,26 @@ with st.container(border=True): #fist query; price prediction
       "SELECT distinct Type FROM dataset"), 
     placeholder="Select type",
   )
-  select_rooms = feature_col.text_input(label="Amount of rooms:")
-
+  int(select_rooms) = feature_col.text_input(label="Amount of rooms:")
+  select_method = feature_col.selectbox(
+    "Method:", 
+    data.query(
+      "SELECT distinct Method FROM dataset"), 
+    placeholder="Select method",
+  )
+  int(select_distance) = feature_col.text_input(label="Distance to centre:")
+  int(select_bedroom) = feature_col.text_input(label="Amount of bedrooms:")
+  int(select_bathroom) = feature_col.text_input(label="Amount of bathrooms:")
+  int(select_car) = feature_col.text_input(label="Amount of carparking spaces:")
+  int(select_landsize) = feature_col.text_input(label="Landsize:")
+  int(select_yearbuilt) = feature_col.text_input(label="Year built:")
+  select_councilarea = feature_col.selectbox(
+    "Region:", 
+    data.query(
+      "SELECT distinct CouncilArea FROM dataset"), 
+    placeholder="Council area",
+  )
+  int(select_propertycount) = feature_col.text_input(label="Amount of property in area")
   data_col.write(dataset)
 
 
