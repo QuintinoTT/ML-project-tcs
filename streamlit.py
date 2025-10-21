@@ -12,7 +12,7 @@ with st.container(border=True, gap=None): #top header
 c1 = st.container(border=True)
 c1.write(data.dataset) #display dataset
 
-col1=st.columns(1) #textinput + query output
+col1, col2 = st.columns(2) #textinput + query output
 budgetinp=col1.text_input(label="Budget",placeholder="Budget")
 budgetreginp=col1.selectbox(
   "Region:", 
@@ -26,6 +26,7 @@ if st.button("Budget stuff"):
   st.write(regionB, pricevarB)
   st.write(data.query("select *, "+pricevarB+"-price as Budget_deviation, price FROM dataset  WHERE CouncilArea = \""+regionB+"\" order by ABS(Budget_deviation) LIMIT 15 "))
   
+
 
 
 
