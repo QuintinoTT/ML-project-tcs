@@ -20,7 +20,7 @@ with st.container(border=True): #fist query; price prediction
       "SELECT distinct Type FROM dataset"), 
     placeholder="Select type",
   )
-  int(select_rooms) = feature_col.text_input(label="Amount of rooms:")
+  select_rooms = feature_col.text_input(label="Amount of rooms:")
   select_method = feature_col.selectbox(
     "Method:", 
     data.query(
