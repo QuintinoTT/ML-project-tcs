@@ -9,7 +9,10 @@ dataset = data.dataset
 with st.container(border=True, gap="Small"):
   sqlquery = st.text_input(label="temperary SQL on web app (invalid query will break the website)", placeholder="write your SQL query here")
   if st.button("push query"):
-      st.write(data.query(sqlquery))
+    try:
+        st.write(data.query(sqlquery))
+    except PandaSqlException:
+      st.write("nah)
 
 
 
@@ -67,6 +70,7 @@ with st.container(border=True): #second query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
