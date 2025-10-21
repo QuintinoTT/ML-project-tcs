@@ -6,7 +6,7 @@ import dataprocessing as data
 
 dataset = data.dataset
 
-with st.container(border=True, gap=None):
+with st.container(border=True, gap="Small"):
   sqlquery = st.text_input(label="temperary SQL on web app (invalid query will break the website)", placeholder="write your SQL query here")
   if st.button("push query"):
     st.write(data.query(sqlquery))
