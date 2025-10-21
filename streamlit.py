@@ -27,6 +27,10 @@ with st.container(border=True):
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
 
 
+data.query(
+  "SELECT distinct(*) FROM dataset"
+)
+
 
 
 
