@@ -5,7 +5,7 @@ import pandasql as ps
 import dataprocessing as data
 
 dataset = data.dataset
-
+#querry stuff
 with st.container(border=True, gap="Small"):
   sqlquery = st.text_input(label="temperary SQL on web app (invalid query will break the website)", placeholder="write your SQL query here")
   if st.button("push query"):
@@ -13,7 +13,7 @@ with st.container(border=True, gap="Small"):
         st.write(data.query(sqlquery))
     except Exception:
       st.write("nah")
-      
+#end
 
 
 
@@ -23,7 +23,7 @@ with st.container(border=True, gap=None): #top header
 
 
 with st.container(border=True): #fist query; price prediction
-  st.subheader("Price prediction:")
+  st.subheader("Sale price prediction:")
   feature_col, data_col = st.columns([1,3])
 
   #drop down boxes for price prediction
@@ -58,6 +58,7 @@ with st.container(border=True): #fist query; price prediction
 
 
 with st.container(border=True): #second query
+  st.header("Budget Prediction")
   st.write(dataset) #display dataset
   budgetinp=st.text_input(label="Budget:", placeholder="Select budget")
   budgetreginp=st.selectbox(
@@ -66,11 +67,14 @@ with st.container(border=True): #second query
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Select region",
   )
+
+  
   if st.button("Budget stuff"):
     regionB = budgetreginp
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
