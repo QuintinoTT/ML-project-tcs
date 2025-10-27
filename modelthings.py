@@ -5,6 +5,7 @@ model = load("mdl.joblib")
 scaler = load("scale.joblib")
 def Dealwithinputdata(dataframe):
   dummiedframe=pd.get_dummies(dataframe)
+  dummiedframe.astype(int)
   ghostrowc = ghostrow.copy()
   print(ghostrowc)
   for columns in ghostrowc:
