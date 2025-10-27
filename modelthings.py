@@ -9,6 +9,5 @@ def Dealwithinputdata(dataframe):
   dummiedframe=pd.get_dummies(dataframe)
   dummiedframe.astype(int)
   ghostrowc = ghostrow.copy()
-  ghostrowc=ghostrowc.drop(columns=["Unnamed:0"])
-
+ 
   return ghostrowc 
