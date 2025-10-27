@@ -1,6 +1,6 @@
 import pandas as pd
 from joblib import load
-ghostrow = pd.read_csv(ghostframe.csv)
+ghostrow = pd.read_csv('ghostframe.csv')
 model = load("knn_model_price_prediction.joblib")
 scaler = load("scaler_price_prediction.joblib")
 def Dealwithinputdata(dataframe):
