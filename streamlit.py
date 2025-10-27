@@ -57,7 +57,9 @@ with st.container(border=True): #fist query; price prediction
   select_propertycount = feature_col.text_input(label="Property count:")
   data_col.write(dataset)
   if st.button("Estimate"):
-    newframe = models.Dealwithinputdata(pd.DataFrame(data={"Rooms": [select_rooms], "Distance": [2], "Bedroom2": [select_bedroom],"Bathroom": [select_bathroom],"Car": [select_car],"Landsize":[select_landsize], "YearBuilt":[select_yearbuilt], "PropertyCount": [select_propertycount], "Type": [select_type], "Method": [select_method],   "CouncilArea": [select_councilarea], }))
+   # newframe = models.Dealwithinputdata(pd.DataFrame(data={"Rooms": [select_rooms], "Distance": [select_distance], "Bedroom2": [select_bedroom],"Bathroom": [select_bathroom],"Car": [select_car],"Landsize":[select_landsize], "YearBuilt":[select_yearbuilt], "PropertyCount": [select_propertycount], "Type": [select_type], "Method": [select_method],   "CouncilArea": [select_councilarea], }))
+    newframe = models.Dealwithinputdata(pd.DataFrame(data={"Rooms": [2], "Distance": [2], "Bedroom2": [1],"Bathroom": [1],"Car": [0],"Landsize":[20], "YearBuilt":[2], "PropertyCount": [20000], "Type": ["h"], "Method": ["S"],   "CouncilArea": ["Yarra"], }))
+
     st.write(models.predictthing(newframe))
   
 with st.container(border=True): #second query
