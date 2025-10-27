@@ -3,7 +3,25 @@ import pandas as pd
 import sklearn as sl
 import pandasql as ps
 import dataprocessing as data
-import modelthings as model
+
+from joblib import load
+ghostrow = pd.read_csv('ghostframe.csv')
+
+model = load("mdl.joblib")
+scaler = load("scale.joblib")
+def Dealwithinputdata(dataframe):
+  dummiedframe=pd.get_dummies(dataframe)
+  dummiedframe.astype(int)
+  ghostrowc = ghostrow.copy()
+  ghostrowc=ghostrowc.drop(columns=["Unnamed: 0"])
+  for columns in ghostrowc:
+      if columns in dummiedframe.columns:
+         ghostrowc.at[0, columns] = dummiedframe.at[0, columns]
+  scaledframe=scaler.transform(ghostrowc)
+  return scaledframe
+
+
+
 dataset = data.dataset
 #querry stuff
 with st.container(border=True, gap="Small"):
@@ -58,7 +76,7 @@ with st.container(border=True): #fist query; price prediction
   data_col.write(dataset)
   if st.button("Estimate"):
    st.write(select_rooms, select_distance, select_landsize)
-   st.write(model.model.predict(model.Dealwithinputdata(pd.DataFrame(data={"Rooms": [select_rooms], "Distance": [select_distance], "Bedroom2": [select_bedroom],"Bathroom": [select_bathroom],"Car": [select_car],"Landsize":[select_landsize], "YearBuilt":[select_yearbuilt], "PropertyCount": [select_propertycount], "Type": [select_type], "Method": [select_method],   "CouncilArea": [select_councilarea]}))))
+   st.write(model.predict(Dealwithinputdata(pd.DataFrame(data={"Rooms": [select_rooms], "Distance": [select_distance], "Bedroom2": [select_bedroom],"Bathroom": [select_bathroom],"Car": [select_car],"Landsize":[select_landsize], "YearBuilt":[select_yearbuilt], "PropertyCount": [select_propertycount], "Type": [select_type], "Method": [select_method],   "CouncilArea": [select_councilarea]}))))
   
 with st.container(border=True): #second query
   st.header("Feature importance estimation")
@@ -88,6 +106,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
