@@ -59,12 +59,19 @@ with st.container(border=True): #fist query; price prediction
 with st.container(border=True): #second query
   st.header("Feature importance estimation")
   inputcolumn, outputcolumn = st.columns([1,3])
+  councilareachoice =
+  inputcolumn.selectbox(
+    "Region:", 
+    data.query(
+      "SELECT distinct CouncilArea FROM dataset"), 
+    placeholder="Council area",
+  )
 
 
 
 
 with st.container(border=True): #third query
-  st.header("Budget Prediction")
+ # st.header("Budget Prediction")
   st.write(dataset) #display dataset
   budgetinp=st.text_input(label="Budget:", placeholder="Select budget")
   budgetreginp=st.selectbox(
@@ -80,6 +87,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
