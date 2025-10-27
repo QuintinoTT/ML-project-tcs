@@ -3,7 +3,7 @@ import pandas as pd
 import sklearn as sl
 import pandasql as ps
 import dataprocessing as data
-import modelthings as models
+import modelthings as model
 dataset = data.dataset
 #querry stuff
 with st.container(border=True, gap="Small"):
@@ -58,7 +58,7 @@ with st.container(border=True): #fist query; price prediction
   data_col.write(dataset)
   if st.button("Estimate"):
 
-   st.write(models.model.predict(models.Dealwithinputdata(pd.DataFrame(data={"Rooms": [select_rooms], "Distance": [select_distance], "Bedroom2": [select_bedroom],"Bathroom": [select_bathroom],"Car": [select_car],"Landsize":[select_landsize], "YearBuilt":[select_yearbuilt], "PropertyCount": [select_propertycount], "Type": [select_type], "Method": [select_method],   "CouncilArea": [select_councilarea], }))))
+   st.write(model.model.predict(model.Dealwithinputdata(pd.DataFrame(data={"Rooms": [select_rooms], "Distance": [select_distance], "Bedroom2": [select_bedroom],"Bathroom": [select_bathroom],"Car": [select_car],"Landsize":[select_landsize], "YearBuilt":[select_yearbuilt], "PropertyCount": [select_propertycount], "Type": [select_type], "Method": [select_method],   "CouncilArea": [select_councilarea], }))))
   
 with st.container(border=True): #second query
   st.header("Feature importance estimation")
@@ -88,6 +88,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
