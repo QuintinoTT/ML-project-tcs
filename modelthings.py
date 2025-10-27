@@ -16,5 +16,3 @@ def Dealwithinputdata(dataframe):
   scaledframe=scaler.transform(ghostrowc)
   return scaledframe
 
-def predictthing(row):
- return model.predict(row)
