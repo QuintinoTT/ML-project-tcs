@@ -15,7 +15,7 @@ with st.container(border=True, gap="Small"):
       st.write("nah")
 #end
 
-print(
+
 
 with st.container(border=True, gap=None): #top header
   st.header("Melbourne housing", divider="blue")
@@ -88,6 +88,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
