@@ -8,8 +8,5 @@ def Dealwithinputdata(dataframe):
   dummiedframe=pd.get_dummies(dataframe)
   dummiedframe.astype(int)
   ghostrowc = ghostrow.copy()
-  #for columns in ghostrowc:
-      #  if columns in dummiedframe.columns:
-       #    ghostrowc.at[0, columns] = dummiedframe.at[0, columns]
-  #scaledframe=scaler.transform(ghostrowc)
+
   return ghostrow 
