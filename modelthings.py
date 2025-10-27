@@ -15,3 +15,6 @@ def Dealwithinputdata(dataframe):
          ghostrowc.at[0, columns] = dummiedframe.at[0, columns]
   scaledframe=scaler.transform(ghostrowc)
   return scaledframe
+
+def predictthing(row):
+ return model.predict(row)
