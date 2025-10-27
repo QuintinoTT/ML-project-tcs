@@ -4,7 +4,7 @@ import sklearn.model_selection as skl
 from sklearn.preprocessing import StandardScaler
 
 dataset_path = 'dataset.csv'
-dataset = pd.read_csv(dataset_path)
+dataset = pd.read_csv(dataset_path, index=False)
 
 dataset = dataset.drop(columns=['Address', 'BuildingArea', 'Suburb', 'Postcode','Date', 'Lattitude', 'Longtitude', 'Regionname', 'SellerG'])
 
@@ -47,5 +47,6 @@ print(dataset)
 print("Cleaned dataset saved to 'cleaned_md.csv'")
 def datasetcall():
     return dataset
+
 
 
