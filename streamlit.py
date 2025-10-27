@@ -3,7 +3,7 @@ import pandas as pd
 import sklearn as sl
 import pandasql as ps
 import dataprocessing as data
-
+import modelthings as model
 dataset = data.dataset
 #querry stuff
 with st.container(border=True, gap="Small"):
@@ -54,8 +54,12 @@ with st.container(border=True): #fist query; price prediction
   select_car = feature_col.text_input(label="Amount of carparking spaces:")
   select_landsize = feature_col.text_input(label="Landsize:")
   select_yearbuilt = feature_col.text_input(label="Year built:")
+  select_propertycount = feature_col.text_input(label="Property count:")
   data_col.write(dataset)
+  if st.button("Estimate"):
+    newframe = model.Dealwithinputdata(pd.DataFrame("Rooms": select_rooms, "Type": select_type, "Method": select_method, "Distance": select_distance, "Bedroom2": select_bedroom, "Bathroom": select_bathroom, "Car": select_car, "Landsize":select_landsize, "YearBuilt":select_yearbuild, "CouncilArea": select_councilarea, "PropertyCount": select_propertycount)
 
+  
 with st.container(border=True): #second query
   st.header("Feature importance estimation")
   inputcolumn, outputcolumn = st.columns([1,3])
@@ -84,6 +88,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
