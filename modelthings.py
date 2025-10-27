@@ -10,8 +10,5 @@ def Dealwithinputdata(dataframe):
   dummiedframe.astype(int)
   ghostrowc = ghostrow.copy()
   ghostrowc=ghostrowc.drop(columns=["Unnamed:0"])
-  for columns in ghostrowc:
-      if columns in dummiedframe.columns:
-         ghostrowc.at[0, columns] = dummiedframe.at[0, columns]
-  scaledframe=scaler.transform(ghostrowc)
-  return scaledframe 
+
+  return ghostrowc 
