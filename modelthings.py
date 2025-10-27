@@ -14,4 +14,4 @@ def Dealwithinputdata(dataframe):
       if columns in dummiedframe.columns:
          ghostrowc.at[0, columns] = dummiedframe.at[0, columns]
   scaledframe=scaler.transform(ghostrowc)
-  return ghostrowc 
+  return scaledframe
