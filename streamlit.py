@@ -71,8 +71,8 @@ with st.container(border=True): #second query
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Council area")
   if st.button("List"): 
-    him = boetmodule.highest_influence_metric(areabox)
-    st.write(him(1)[0][0],him(1)[1][0],him(1)[2][0] )
+    him = boetmodule.highest_influence_metric(areabox)(3)
+    st.write([him[0][0],him[1][0],him[2][0] ])
 
 
 
@@ -94,6 +94,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
