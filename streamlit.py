@@ -74,7 +74,7 @@ with st.container(border=True): #fist query; price prediction
   data_col.write(dataset)
   if st.button("Estimate"):
    st.write(select_rooms, select_distance, select_landsize)
-   newframe=Dealwithinputdata(pd.DataFrame(data={"Rooms": [20], "Distance": [20], "Bedroom2": [2],"Bathroom": [2],"Car": [0],"Landsize":[2], "YearBuilt":[2], "PropertyCount": [2], "Type": ['h'], "Method": ["S"],  "CouncilArea": ["Yarra"]}))
+   newframe=Dealwithinputdata(pd.DataFrame(data={"Rooms": [2], "Distance": [20], "Bedroom2": [2],"Bathroom": [2],"Car": [0],"Landsize":[2], "YearBuilt":[2], "PropertyCount": [2], "Type": ['h'], "Method": ["S"],  "CouncilArea": ["Yarra"]}))
   # st.write(model.predict(Dealwithinputdata
    Pricebox = st.write(model.predict(newframe))
 
@@ -108,6 +108,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
