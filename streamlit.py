@@ -26,7 +26,7 @@ with st.container(border=True, gap="Small"):
 
 with st.container(border=True): #fist query; price prediction
   st.subheader("Sale price prediction:")
-  one_col, two_col, three_col = st.columns([1,2,3])
+  one_col, two_col, three_col = st.columns([3,3,3])
 
   #drop down boxes for price prediction
   select_type = one_col.selectbox(
@@ -95,6 +95,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
