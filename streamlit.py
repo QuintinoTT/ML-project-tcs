@@ -4,7 +4,7 @@ import sklearn as sl
 import pandasql as ps
 import dataprocessing as data
 import modelthings as model
-
+import influentialmetric as BW
 dataset = data.dataset
 #querry stuff
 with st.container(border=True, gap="Small"):
@@ -70,7 +70,8 @@ with st.container(border=True): #second query
   areabox = inputcolumn.selectbox("e", data.query(
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Council area")
-  
+  if st.button("List"): 
+    print("E")
 
 
 
@@ -92,6 +93,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
