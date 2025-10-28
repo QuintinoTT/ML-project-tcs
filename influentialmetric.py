@@ -78,16 +78,16 @@ def highest_influence_metric(council_area):
 
             # Corrupt the metric, make a prediction, store that prediction in a list and then restore the corrupted value
             # It does this for each value in the row
-            ind = 0
-            while ind < len(dataset_encsca[i]):
-                if "CouncilArea" not in dataset_encoded.columns[ind]:
+            j = 0
+            while j < len(dataset_encsca[i]):
+                if "CouncilArea" not in dataset_encoded.columns[j]:
                     corrupt_row = dataset_encsca[i]
-                    corrupt_row[ind] = corrupt_row[ind] * 1000
+                    corrupt_row[j] = corrupt_row[j] * 1000
 
                     prediction = knn_reg_loaded.predict(corrupt_row.reshape(1, -1))
                     list_predictions.append(prediction)
 
-                ind = ind+1
+                j = j+1
 
             # Find the index value of the metric which influenced the price the most
             res = max(list_predictions)
@@ -105,5 +105,6 @@ def highest_influence_metric(council_area):
     counterlist = Counter(list_metrics)
     # Return the most common metric in the list of metrics
     return counterlist.most_common
+
 
 
