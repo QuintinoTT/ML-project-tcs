@@ -8,12 +8,12 @@ import influentialmetric as boetmodule
 dataset = data.dataset
 #querry stuff
 with st.container(border=True, gap="Small"):
-  sqlquery = st.text_input(label="temperary SQL on web app (invalid query will break the website)", placeholder="write your SQL query here")
+  sqlquery = st.text_input(label="SQL entry")
   if st.button("push query"):
     try:
         st.write(data.query(sqlquery))
     except Exception:
-      st.write("nah")
+      st.write("Invalid Querry")
 #end
 
 
@@ -67,7 +67,7 @@ with st.container(border=True): #fist query; price prediction
 with st.container(border=True): #second query
   st.header("Feature importance estimation")
   inputcolumn, outputcolumn = st.columns([1,3])
-  areabox = inputcolumn.selectbox("e", data.query(
+  areabox = inputcolumn.selectbox( data.query(
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Council area")
   if st.button("List"): 
@@ -94,6 +94,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
