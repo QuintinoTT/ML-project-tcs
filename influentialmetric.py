@@ -50,9 +50,9 @@ def highest_influence_metric(council_area):
             area_index = i
         i = i+1
 
-    area_index_decr = area_index + 1
+ 
     print(area_index)
-    print(dataset_encsca[69][area_index_decr])
+    print(dataset_encsca[69][area_index])
 
     list_metrics = []
 
@@ -105,4 +105,5 @@ def highest_influence_metric(council_area):
     counterlist = Counter(list_metrics)
     # Return the most common metric in the list of metrics
     return counterlist.most_common
+
 
