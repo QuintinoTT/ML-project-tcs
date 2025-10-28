@@ -6,17 +6,17 @@ from joblib import load
 
 # Load the saved model and scaler
 knn_reg_loaded = load(
-    r"C:\Users\bbuls\Documents\knn_model_price_prediction.joblib")
+    "model.joblib")
 scaler_loaded = load(
-    r"C:\Users\bbuls\Documents\scaler_price_prediction.joblib")
+    "scalr.joblib")
 
 # Modify the path according to where the file is in your filesystem
 dataset = pd.read_csv(
-    r"C:\Users\bbuls\Documents\md.csv")
+    "dataset.csv")
 
 # Clean up the dataset
 dataset = dataset.drop(columns=['Address', 'BuildingArea', 'Suburb',
-                       'Postcode', 'Date', 'Lattitude', 'Longtitude', 'Regionname', 'Price'])
+                       'Postcode', 'Date', 'Lattitude', 'Longtitude', 'Regionname', 'Price','SellerG'])
 
 for i, row in dataset.iterrows():
     if row['Landsize'] == 0:
@@ -105,3 +105,4 @@ def highest_influence_metric(council_area):
     counterlist = Counter(list_metrics)
     # Return the most common metric in the list of metrics
     return counterlist.most_common
+
