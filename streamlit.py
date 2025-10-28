@@ -17,7 +17,7 @@ with st.container(border=True, gap=None): #top header
 #querry stuff
 with st.container(border=True, gap="Small"):
   sqlquery = st.text_input(label="SQL entry")
-  if st.button("push query"):
+  if st.button("Push query"):
     try:
         st.write(data.query(sqlquery))
     except Exception:
@@ -95,6 +95,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
