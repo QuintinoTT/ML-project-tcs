@@ -6,6 +6,14 @@ import dataprocessing as data
 import modelthings as model
 import influentialmetric as boetmodule
 dataset = data.dataset
+
+
+
+
+with st.container(border=True, gap=None): #top header
+  st.header("Melbourne housing", divider="blue")
+  st.write("Predicting housing prices using kNN Machine Learning")
+
 #querry stuff
 with st.container(border=True, gap="Small"):
   sqlquery = st.text_input(label="SQL entry")
@@ -15,13 +23,6 @@ with st.container(border=True, gap="Small"):
     except Exception:
       st.write("Invalid Querry")
 #end
-
-
-
-with st.container(border=True, gap=None): #top header
-  st.header("Melbourne housing", divider="blue")
-  st.write("Predicting housing prices using kNN Machine Learning")
-
 
 with st.container(border=True): #fist query; price prediction
   st.subheader("Sale price prediction:")
@@ -94,6 +95,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
