@@ -3,22 +3,7 @@ import pandas as pd
 import sklearn as sl
 import pandasql as ps
 import dataprocessing as data
-from joblib import load
-ghostrow = pd.read_csv('ghostframe.csv')
-
-model = load("model.joblib")
-scaler = load("scalr.joblib")
-def Dealwithinputdata(dataframe):
-  dummiedframe=pd.get_dummies(dataframe)
-
-  ghostrowc = ghostrow.copy()
-
-  for columns in ghostrowc:
-      if columns in dummiedframe.columns:
-         ghostrowc.at[0, columns] = dummiedframe.at[0, columns]
-  ghostrowc=ghostrowc.drop(columns=["Unnamed: 0"])
-  scaledframe=scaler.transform(ghostrowc)
-  return scaledframe
+import modelthings as model
 
 dataset = data.dataset
 #querry stuff
@@ -77,7 +62,7 @@ with st.container(border=True): #fist query; price prediction
    #newframe=Dealwithinputdata(pd.DataFrame(data={"Rooms": [2], "Distance": [20], "Bedroom2": [2],"Bathroom": [2],"Car": [0],"Landsize":[2], "YearBuilt":[2], "PropertyCount": [2], "Type": ['h'], "Method": ["S"],  "CouncilArea": ["Yarra"]}))
   # st.write(model.predict(Dealwithinputdata
 
-    Pricebox = st.write(model.predict(Dealwithinputdata(pd.DataFrame(data={"Rooms": [int(select_rooms)], "Distance": [float(select_distance)], "Bedroom2": [int(select_bedroom)],"Bathroom": [int(select_bathroom)],"Car": [int(select_car)],"Landsize":[float(select_landsize)], "YearBuilt":[int(select_yearbuilt)], "PropertyCount": [int(select_propertycount)], "Type": [select_type], "Method": [select_method],   "CouncilArea": [select_councilarea]}))))
+    Pricebox = st.write(model.model.predict(model.Dealwithinputdata(pd.DataFrame(data={"Rooms": [int(select_rooms)], "Distance": [float(select_distance)], "Bedroom2": [int(select_bedroom)],"Bathroom": [int(select_bathroom)],"Car": [int(select_car)],"Landsize":[float(select_landsize)], "YearBuilt":[int(select_yearbuilt)], "PropertyCount": [int(select_propertycount)], "Type": [select_type], "Method": [select_method],   "CouncilArea": [select_councilarea]}))))
   
 with st.container(border=True): #second query
   st.header("Feature importance estimation")
@@ -107,6 +92,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
