@@ -55,7 +55,7 @@ with st.container(border=True): #fist query; price prediction
   select_bedroom = three_col.text_input(label="Amount of bedrooms: (1-10)")
   select_bathroom = one_col.text_input(label="Amount of bathrooms: (1-8)")
   select_car = two_col.text_input(label="Amount of carparking spaces: (0-10)")
-  select_landsize = three_col.text_input(label="Landsize (km^2): (<37000)")
+  select_landsize = three_col.text_input(label="Landsize (km^2): (<25000)")
   select_yearbuilt = one_col.text_input(label="Year built: (1830-2017)")
   select_propertycount = two_col.text_input(label="Property count: (300-22000)")
  
@@ -94,6 +94,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
