@@ -89,11 +89,12 @@ with st.container(border=True): #third query
   )
 
   
-  if st.button("Budget stuff"):
+  if st.button("Check possibilities"):
     regionB = budgetreginp
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
