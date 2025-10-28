@@ -12,10 +12,11 @@ def Dealwithinputdata(dataframe):
   dummiedframe=pd.get_dummies(dataframe)
 
   ghostrowc = ghostrow.copy()
-  ghostrowc=ghostrowc.drop(columns=["Unnamed: 0"])
+
   for columns in ghostrowc:
       if columns in dummiedframe.columns:
          ghostrowc.at[0, columns] = dummiedframe.at[0, columns]
+  ghostrowc=ghostrowc.drop(columns=["Unnamed: 0"])
   scaledframe=scaler.transform(ghostrowc)
   return scaledframe
 
@@ -103,6 +104,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
