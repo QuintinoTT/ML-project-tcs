@@ -26,22 +26,22 @@ with st.container(border=True, gap="Small"):
 
 with st.container(border=True): #fist query; price prediction
   st.subheader("Sale price prediction:")
-  feature_col, data_col = st.columns([1,3])
+  one_col, two_col three_col = st.columns([1,2,3])
 
   #drop down boxes for price prediction
-  select_type = feature_col.selectbox(
+  select_type = one_col.selectbox(
     "Type:", 
     data.query(
       "SELECT distinct Type FROM dataset"), 
     placeholder="Select type",
   )
-  select_councilarea = feature_col.selectbox(
+  select_councilarea = two_col.selectbox(
     "Region:", 
     data.query(
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Council area",
   )
-  select_method = feature_col.selectbox(
+  select_method = three_col.selectbox(
     "Method:", 
     data.query(
       "SELECT distinct Method FROM dataset"), 
@@ -49,15 +49,15 @@ with st.container(border=True): #fist query; price prediction
   )
 
   #text inputs for price prediction
-  select_rooms = feature_col.text_input(label="Amount of rooms:")
-  select_distance = feature_col.text_input(label="Distance to centre:")
-  select_bedroom = feature_col.text_input(label="Amount of bedrooms:")
-  select_bathroom = feature_col.text_input(label="Amount of bathrooms:")
-  select_car = feature_col.text_input(label="Amount of carparking spaces:")
-  select_landsize = feature_col.text_input(label="Landsize:")
-  select_yearbuilt = feature_col.text_input(label="Year built:")
-  select_propertycount = feature_col.text_input(label="Property count:")
-  data_col.write(dataset)
+  select_rooms = one_col.text_input(label="Amount of rooms:")
+  select_distance = two_col.text_input(label="Distance to centre:")
+  select_bedroom = three_col.text_input(label="Amount of bedrooms:")
+  select_bathroom = one_col.text_input(label="Amount of bathrooms:")
+  select_car = two_col.text_input(label="Amount of carparking spaces:")
+  select_landsize = three_col.text_input(label="Landsize:")
+  select_yearbuilt = one_col.text_input(label="Year built:")
+  select_propertycount = two_col.text_input(label="Property count:")
+  two_col.write(dataset)
   if st.button("Estimate"):
   # st.write(select_rooms, select_distance, select_landsize)
    #newframe=Dealwithinputdata(pd.DataFrame(data={"Rooms": [2], "Distance": [20], "Bedroom2": [2],"Bathroom": [2],"Car": [0],"Landsize":[2], "YearBuilt":[2], "PropertyCount": [2], "Type": ['h'], "Method": ["S"],  "CouncilArea": ["Yarra"]}))
@@ -95,6 +95,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
