@@ -59,7 +59,7 @@ with st.container(border=True): #fist query; price prediction
   select_yearbuilt = one_col.text_input(label="Year built:")
   select_propertycount = two_col.text_input(label="Property count:")
  
-with st.container(border=True):
+with st.container(border=False):
  
   if st.button("Estimate"):
  
@@ -94,6 +94,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
