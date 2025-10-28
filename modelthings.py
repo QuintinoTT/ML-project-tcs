@@ -3,7 +3,7 @@ import pandas as pd
 from joblib import load
 ghostrow = pd.read_csv('ghostframe.csv')
 
-model = load("modl.joblib")
+model = load("model.joblib")
 scaler = load("scalr.joblib")
 def Dealwithinputdata(dataframe):
   dummiedframe=pd.get_dummies(dataframe)
