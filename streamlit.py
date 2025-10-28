@@ -4,7 +4,7 @@ import sklearn as sl
 import pandasql as ps
 import dataprocessing as data
 import modelthings as model
-import influentialmetric as BW
+import influentialmetric as boetmodule
 dataset = data.dataset
 #querry stuff
 with st.container(border=True, gap="Small"):
@@ -71,7 +71,7 @@ with st.container(border=True): #second query
       "SELECT distinct CouncilArea FROM dataset"), 
     placeholder="Council area")
   if st.button("List"): 
-    st.write(BW.highest_influence_metric(areabox))
+    st.write(boetmodule.highest_influence_metric(areabox))
 
 
 
@@ -93,6 +93,7 @@ with st.container(border=True): #third query
     pricevarB = str(budgetinp)
     st.write(data.query(
       "SELECT *, "+pricevarB+"-price AS Budget_deviation FROM dataset  WHERE CouncilArea = \""+regionB+"\" ORDER BY ABS(Budget_deviation) LIMIT 15 ")) #change query to select less stuff and sort by price deviation
+
 
 
 
